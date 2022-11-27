@@ -49,9 +49,6 @@ public class ControllerProfessor implements Initializable {
     private Button BtnExcluir;
 
     @FXML
-    private Button refreshButton;
-
-    @FXML
     private TableView<Professor> Tabela = new TableView<Professor>();
 
     @FXML
@@ -94,7 +91,7 @@ public class ControllerProfessor implements Initializable {
     private void altera_click(ActionEvent event) {
         editar(true);
         incluindo = true;
-        BtnAlterar.setStyle("-fx-background-color: Yellow");
+        BtnAlterar.setStyle(null);
         BtnExcluir.setStyle(null);
     }
 
@@ -106,7 +103,7 @@ public class ControllerProfessor implements Initializable {
         TxtEndereco.setText("");
         TxtNome.setText("");
         TxtNome.requestFocus();
-        BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
+        BtnIncluir.setStyle(null);
         BtnExcluir.setStyle(null);
 
     }
@@ -116,11 +113,6 @@ public class ControllerProfessor implements Initializable {
         dao.apagar(professor);
         preencherLista();
         BtnExcluir.setStyle(null);
-    }
-
-    @FXML
-    private void recarregar_click(ActionEvent event) {
-        preencherLista();
     }
 
     @FXML

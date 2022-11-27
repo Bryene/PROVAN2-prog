@@ -21,7 +21,6 @@
       <Button fx:id="BtnIncluir" layoutX="15.0" layoutY="361.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
       <Button fx:id="BtnAlterar" layoutX="88.0" layoutY="361.0" mnemonicParsing="false" onAction="#altera_click" text="Alterar" />
       <Button fx:id="BtnExcluir" layoutX="162.0" layoutY="361.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
-      <Button fx:id="refreshButton" layoutX="407.0" layoutY="162.0" mnemonicParsing="false" onAction="#recarregar_click" text="Refresh" />
       <TextField fx:id="TxtNacionalidade" disable="true" layoutX="407.0" layoutY="83.0" />
       <Label layoutX="330.0" layoutY="87.0" text="Nacionalidade" />
    </children>

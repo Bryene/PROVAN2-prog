@@ -48,9 +48,6 @@ public class ControllerAluno implements Initializable {
     private Button BtnExcluir;
 
     @FXML
-    private Button refreshButton;
-
-    @FXML
     private TableView<Aluno> Tabela = new TableView<Aluno>();
 
     @FXML
@@ -119,11 +116,6 @@ public class ControllerAluno implements Initializable {
         dao.apagar(aluno);
         preencherLista();
         BtnExcluir.setStyle(null);
-    }
-
-    @FXML
-    private void recarregar_click(ActionEvent event) {
-        preencherLista();
     }
 
     @FXML

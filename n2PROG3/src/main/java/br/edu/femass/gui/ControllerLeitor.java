@@ -36,7 +36,7 @@ public class ControllerLeitor implements Initializable {
     @FXML
     private void btnCadastrarAluno(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiAluno.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiAlunoo.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
             scene.getRoot().setStyle("-fx-font-family: 'serif'");

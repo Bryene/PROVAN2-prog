@@ -46,9 +46,6 @@ public class Controllerlivro implements Initializable {
     private Button BtnExcluir;
 
     @FXML
-    private Button refreshButton;
-
-    @FXML
     private TableView<Livro> Tabela = new TableView<Livro>();
 
     @FXML
@@ -105,11 +102,6 @@ public class Controllerlivro implements Initializable {
         dao.apagar(livro);
         preencherLista();
         BtnExcluir.setStyle(null);
-    }
-
-    @FXML
-    private void recarregar_click(ActionEvent event) {
-        preencherLista();
     }
 
     @FXML

@@ -47,9 +47,6 @@ public class ControllerAutor implements Initializable {
     private Button BtnExcluir;
 
     @FXML
-    private Button refreshButton;
-
-    @FXML
     private TableView<Autor> Tabela = new TableView<Autor>();
 
     @FXML
@@ -113,11 +110,6 @@ public class ControllerAutor implements Initializable {
         dao.apagar(autor);
         preencherLista();
         BtnExcluir.setStyle(null);
-    }
-
-    @FXML
-    private void recarregar_click(ActionEvent event) {
-        preencherLista();
     }
 
     @FXML
