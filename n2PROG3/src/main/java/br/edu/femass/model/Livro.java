@@ -2,10 +2,13 @@ package br.edu.femass.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Livro {
@@ -14,19 +17,28 @@ public class Livro {
     protected Long id;
     protected String titulo;
 
-    // private List<Autor> autor;
-
     public Livro(String titulo) {
         this.titulo = titulo;
-        // this.autores = autores;
 
+    }
+
+    public Livro() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public Livro() {
+    @OneToMany(cascade = CascadeType.ALL)
+    protected List<Autor> autores = new ArrayList<Autor>();
+
+    // protected List<Exemplar> exemplares = new ArrayList<Exemplar>();
+
+    public Livro(String titulo, List<Autor> autores) {
+        if (autores == null)
+            autores = new ArrayList<>();
+        autores.addAll(autores);
+        this.titulo = titulo;
     }
 
     public String getTitulo() {
@@ -37,16 +49,95 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    // public void adicionarAutores(String nome, String sobrenome, String
-    // nacionalidade) {
-    // if (autor == null)
-    // autor = new ArrayList();
-    // autor.add(new Autor(nome, sobrenome, nacionalidade));
+    public List<Autor> getAutores() {
+        return autores;
+    }
+
+    public void setAutores(List<Autor> autores) {
+        this.autores = autores;
+    }
+
+    // public List<Exemplar> getExemplares() {
+    // return exemplares;
+    // }
+
+    // public void setExemplares(List<Exemplar> exemplares) {
+    // this.exemplares = exemplares;
     // }
 
     @Override
     public String toString() {
-        return this.titulo;
+        return "Titulo: " + titulo + " || " + this.autores;
     }
 
 }
+
+/*
+ * public void adicionarExemplar(Exemplar exemplar) {
+ * exemplar.setLivro(this);
+ * exemplar.setStatus(Status.disponivel);
+ * exemplares.add(exemplar);
+ * }
+ */
+
+/*
+ * package br.edu.femass.model;
+ * 
+ * import javax.persistence.*;
+ * import java.util.ArrayList;
+ * import java.util.List;
+ * 
+ * @Entity
+ * public class Livro {
+ * 
+ * @Id
+ * 
+ * @GeneratedValue(strategy = GenerationType.IDENTITY)
+ * protected Long id;
+ * protected Long codigo;
+ * protected String titulo;
+ * 
+ * @OneToMany(cascade = CascadeType.ALL)
+ * protected List<Autor> autores;
+ * 
+ * public Livro() {
+ * 
+ * }
+ * 
+ * public Livro(String titulo, List<Autor> autores) {
+ * if (autores == null)
+ * autores = new ArrayList<>();
+ * autores.addAll(autores);
+ * this.titulo = titulo;
+ * }
+ * 
+ * public Long getCodigo() {
+ * return codigo;
+ * }
+ * 
+ * public void setCodigo(Long codigo) {
+ * this.codigo = codigo;
+ * }
+ * 
+ * public String getTitulo() {
+ * return titulo;
+ * }
+ * 
+ * public void setTitulo(String titulo) {
+ * this.titulo = titulo;
+ * }
+ * 
+ * public List<Autor> getAutores() {
+ * return autores;
+ * }
+ * 
+ * public void setAutores(List<Autor> autores) {
+ * this.autores = autores;
+ * }
+ * 
+ * @Override
+ * public String toString() {
+ * return this.titulo + " " + this.autores;
+ * }
+ * }
+ */

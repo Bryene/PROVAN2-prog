@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DaoAutor extends Dao<Autor> {
 
-    public List<Autor> buscarTodos() {
+    public static List<Autor> buscarTodos() {
         return em.createQuery("select a from Autor a order by a.nome").getResultList();
     }
 

@@ -18,7 +18,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import br.edu.femass.dao.DaoAutor;
 import br.edu.femass.dao.DaoLivro;
+import br.edu.femass.model.Autor;
 import br.edu.femass.model.Livro;
 
 public class Controllerlivro implements Initializable {
@@ -28,6 +30,8 @@ public class Controllerlivro implements Initializable {
 
     @FXML
     private ListView<Livro> LstLivros;
+    @FXML
+    private ListView<Autor> LstAutores;
 
     @FXML
     private Button BtnSalvar;
@@ -68,6 +72,7 @@ public class Controllerlivro implements Initializable {
         }
 
         preencherLista();
+        preencherAutores();
         preencherTabela();
         editar(false);
         BtnIncluir.setStyle(null);
@@ -151,6 +156,14 @@ public class Controllerlivro implements Initializable {
         Tabela.setItems(data);
     }
 
+    private void preencherAutores() {
+        List<Autor> autores = DaoAutor.buscarTodos();
+        ObservableList<Autor> data = FXCollections.observableArrayList(autores);
+        // cbAutor.setItems(data);
+        LstAutores.setItems(data);
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         colTitulo.setCellValueFactory(
@@ -160,5 +173,6 @@ public class Controllerlivro implements Initializable {
                 new PropertyValueFactory<Livro, Long>("id"));
         preencherLista();
         preencherTabela();
+        preencherAutores();
     }
 }
