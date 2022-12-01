@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,10 +33,13 @@ public class Controllerlivro implements Initializable {
     private ListView<Livro> LstLivros;
 
     @FXML
-    private ListView<Autor> LstAutores;
+    ComboBox<Autor> ComboBoxAutores;
+    // private ListView<Autor> LstAutores;
 
     @FXML
     private Button BtnSalvar;
+    @FXML
+    private Button BtnSalvarautor;
 
     @FXML
     private Button BtnIncluir;
@@ -46,22 +50,16 @@ public class Controllerlivro implements Initializable {
     @FXML
     private Button BtnExcluir;
 
-    @FXML
-    private TableView<Livro> Tabela = new TableView<Livro>();
-
-    @FXML
-    private TableColumn<Livro, String> colTitulo = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Livro, Long> ID = new TableColumn<>();
-
     private DaoLivro dao = new DaoLivro();
+    private DaoAutor daoAutor = new DaoAutor();
     private Livro livro;
+    private Livro autor;
     private Boolean incluindo;
 
     @FXML
     private void Gravar_Click(ActionEvent event) {
         livro.setTitulo(TxtTitulolivro.getText());
+        livro.setAutores(ComboBoxAutores.getSelectionModel().getSelectedItem());
 
         if (incluindo) {
             dao.inserir(livro);
@@ -70,8 +68,7 @@ public class Controllerlivro implements Initializable {
         }
 
         preencherLista();
-        preencherAutores();
-        preencherTabela();
+        preencherCombo();
         editar(false);
         BtnIncluir.setStyle(null);
         BtnAlterar.setStyle(null);
@@ -91,6 +88,7 @@ public class Controllerlivro implements Initializable {
         editar(true);
         incluindo = true;
         livro = new Livro();
+        ComboBoxAutores.setValue(null);
         TxtTitulolivro.setText("");
         TxtTitulolivro.requestFocus();
         BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
@@ -118,6 +116,7 @@ public class Controllerlivro implements Initializable {
     private void editar(boolean habilitar) {
         LstLivros.setDisable(habilitar);
         TxtTitulolivro.setDisable(!habilitar);
+        ComboBoxAutores.setDisable(!habilitar);
         BtnSalvar.setDisable(!habilitar);
         BtnAlterar.setDisable(habilitar);
         BtnIncluir.setDisable(habilitar);
@@ -132,40 +131,25 @@ public class Controllerlivro implements Initializable {
         }
         BtnExcluir.setStyle("-fx-background-color: Red");
         TxtTitulolivro.setText(livro.getTitulo());
+        ComboBoxAutores.setValue(livro.getAutores());
 
+    }
+
+    private void preencherCombo() {
+        List<Autor> autores = daoAutor.buscarTodos();
+        ObservableList<Autor> data2 = FXCollections.observableArrayList(autores);
+        ComboBoxAutores.setItems(data2);
     }
 
     private void preencherLista() {
         List<Livro> livros = dao.buscarTodos();
-
         ObservableList<Livro> data = FXCollections.observableList(livros);
         LstLivros.setItems(data);
     }
 
-    private void preencherTabela() {
-        List<Livro> livros = dao.buscarTodosPorid();
-
-        ObservableList<Livro> data = FXCollections.observableList(livros);
-        Tabela.setItems(data);
-    }
-
-    private void preencherAutores() {
-        List<Autor> autores = DaoAutor.buscarTodos();
-        ObservableList<Autor> data = FXCollections.observableArrayList(autores);
-        // cbAutor.setItems(data);
-        LstAutores.setItems(data);
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        colTitulo.setCellValueFactory(
-                new PropertyValueFactory<Livro, String>("titulo"));
-
-        ID.setCellValueFactory(
-                new PropertyValueFactory<Livro, Long>("id"));
         preencherLista();
-        preencherTabela();
-        preencherAutores();
+        preencherCombo();
     }
 }

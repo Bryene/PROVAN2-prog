@@ -5,9 +5,12 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -17,10 +20,11 @@ public class Livro {
     protected Long id;
     protected String titulo;
 
-    public Livro(String titulo) {
-        this.titulo = titulo;
-
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    // @JoinColumn(name = "nome")
+    private Autor autor;
+    // @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    // private List<Exemplar> exemplares;
 
     public Livro() {
     }
@@ -29,16 +33,11 @@ public class Livro {
         return id;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    protected List<Autor> autores = new ArrayList<Autor>();
-
     // protected List<Exemplar> exemplares = new ArrayList<Exemplar>();
 
-    public Livro(String titulo, List<Autor> autores) {
-        if (autores == null)
-            autores = new ArrayList<>();
-        autores.addAll(autores);
+    public Livro(String titulo, Autor autor) {
         this.titulo = titulo;
+        this.autor = autor;
     }
 
     public String getTitulo() {
@@ -49,25 +48,17 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public List<Autor> getAutores() {
-        return autores;
+    public Autor getAutores() {
+        return autor;
     }
 
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
+    public void setAutores(Autor autor) {
+        this.autor = autor;
     }
-
-    // public List<Exemplar> getExemplares() {
-    // return exemplares;
-    // }
-
-    // public void setExemplares(List<Exemplar> exemplares) {
-    // this.exemplares = exemplares;
-    // }
 
     @Override
     public String toString() {
-        return "Titulo: " + titulo;
+        return "Titulo: " + titulo + " || " + "Autor: " + autor;
     }
 
 }
