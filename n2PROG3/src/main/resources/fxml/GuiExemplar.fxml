@@ -11,15 +11,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.gui.ControllerExemplar">
    <children>
-      <Button fx:id="btnRegistrar" disable="true" layoutX="79.0" layoutY="135.0" mnemonicParsing="false" onAction="#Gravar_click" text="Salvar" />
-      <ComboBox fx:id="comboLivro" disable="true" layoutX="27.0" layoutY="60.0" prefHeight="25.0" prefWidth="336.0" />
-      <Button fx:id="btnExcluir" layoutX="555.0" layoutY="306.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
-      <Button fx:id="btnIncluir" layoutX="619.0" layoutY="306.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
-      <Button fx:id="btnAlterar" layoutX="493.0" layoutY="306.0" mnemonicParsing="false" onAction="#alterar_click" text="Alterar" />
-       <TableView fx:id="tabela" layoutX="391.0" layoutY="23.0" prefHeight="275.0" prefWidth="378.0">
+      <Button fx:id="btnRegistrar" disable="true" layoutX="534.0" layoutY="164.0" mnemonicParsing="false" onAction="#Gravar_click" text="Salvar" />
+      <ComboBox fx:id="comboLivro" disable="true" layoutX="390.0" layoutY="88.0" prefHeight="25.0" prefWidth="336.0" />
+      <Button fx:id="btnExcluir" layoutX="136.0" layoutY="253.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
+      <Button fx:id="btnIncluir" layoutX="229.0" layoutY="253.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
+      <Button fx:id="btnAlterar" layoutX="44.0" layoutY="253.0" mnemonicParsing="false" onAction="#alterar_click" text="Alterar" />
+       <TableView fx:id="tabela" layoutX="26.0" layoutY="41.0" prefHeight="167.0" prefWidth="300.0">
         <columns>
           <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="colExemplar" prefWidth="75.0" text="Exemplar" />
+          <TableColumn fx:id="colExemplar" prefWidth="224.0" text="Exemplar" />
         </columns>
       </TableView>
    </children>

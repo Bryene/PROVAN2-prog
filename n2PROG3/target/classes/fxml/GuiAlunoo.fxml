@@ -25,14 +25,5 @@
       <Label layoutX="330.0" layoutY="87.0" text="Telefone" />
       <TextField fx:id="TxtMatricula" disable="true" layoutX="407.0" layoutY="117.0" />
       <Label layoutX="332.0" layoutY="121.0" text="Matricula" />
-      <TableView fx:id="Tabela" layoutX="237.0" layoutY="210.0" prefHeight="142.0" prefWidth="361.0">
-         <columns>
-            <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
-            <TableColumn fx:id="colEnd" prefWidth="75.0" text="Endereço" />
-            <TableColumn fx:id="colTel" prefWidth="75.0" text="Telefone" />
-            <TableColumn fx:id="colMatri" prefWidth="75.0" text="Matricula" />
-            <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-         </columns>
-      </TableView>
    </children>
 </Pane>

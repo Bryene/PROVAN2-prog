@@ -17,19 +17,20 @@
      <TextField fx:id="TxtNomeA" disable="true" layoutX="407.0" layoutY="14.0" />
       <TextField fx:id="TxtSobrenome" disable="true" layoutX="407.0" layoutY="48.0" />
       <Label layoutX="330.0" layoutY="53.0" text="Sobrenome" />
-      <Button fx:id="BtnSalvar" disable="true" layoutX="495.0" layoutY="118.0" mnemonicParsing="false" onAction="#Gravar_Click" text="Salvar" />
+      <Button fx:id="BtnSalvar" disable="true" layoutX="398.0" layoutY="136.0" prefHeight="25.0" prefWidth="149.0" mnemonicParsing="false" onAction="#Gravar_Click" text="Salvar" />
       <Button fx:id="BtnIncluir" layoutX="15.0" layoutY="361.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
       <Button fx:id="BtnAlterar" layoutX="88.0" layoutY="361.0" mnemonicParsing="false" onAction="#altera_click" text="Alterar" />
       <Button fx:id="BtnExcluir" layoutX="162.0" layoutY="361.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
       <TextField fx:id="TxtNacionalidade" disable="true" layoutX="407.0" layoutY="83.0" />
       <Label layoutX="330.0" layoutY="87.0" text="Nacionalidade" />
-      <TableView fx:id="Tabela" layoutX="224.0" layoutY="200.0" prefHeight="124.0" prefWidth="348.0">
-         <columns>
-            <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-            <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
-            <TableColumn fx:id="colSobrenome" prefWidth="75.0" text="Sobrenome" />
-            <TableColumn fx:id="colNac" prefWidth="101.0" text="Nacionalidade" />
-         </columns>
-      </TableView>
+     
+      <TableView fx:id="tabela" layoutX="224.0" layoutY="200.0" prefHeight="124.0" prefWidth="348.0">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="colNome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="colSobrenome" prefWidth="75.0" text="Sobrenome" />
+          <TableColumn fx:id="colNac" prefWidth="101.0" text="Nacionalidade" />
+        </columns>
+         </TableView>
    </children>
 </Pane>

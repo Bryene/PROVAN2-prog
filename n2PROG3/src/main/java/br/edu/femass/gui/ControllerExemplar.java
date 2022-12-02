@@ -47,7 +47,7 @@ public class ControllerExemplar implements Initializable {
     @FXML
     private Button btnIncluir;
 
-    DaoExemplar daoExemplar = new DaoExemplar();
+    DaoExemplar dao = new DaoExemplar();
     DaoLivro daoLivro = new DaoLivro();
 
     private Exemplar exemplar;
@@ -60,31 +60,38 @@ public class ControllerExemplar implements Initializable {
         exemplar.setLivro(comboLivro.getSelectionModel().getSelectedItem());
 
         if (incluindo) {
-            daoExemplar.inserir(exemplar);
+            dao.inserir(exemplar);
         } else {
-            daoExemplar.alterar(exemplar);
+            dao.alterar(exemplar);
         }
 
         preencherTabela();
+        preencherTabela();
         editar(false);
+        btnIncluir.setStyle(null);
+        btnAlterar.setStyle(null);
+        btnExcluir.setStyle(null);
     }
 
     @FXML
     private void incluir_click(ActionEvent event) {
         editar(true);
         preencherCombo();
+        preencherTabela();
 
         incluindo = true;
         livro = new Livro();
         exemplar = new Exemplar();
         comboLivro.requestFocus();
         btnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
+        btnExcluir.setStyle(null);
     }
 
     @FXML
     private void alterar_click(ActionEvent event) {
         editar(true);
         preencherCombo();
+        preencherTabela();
         incluindo = true;
         btnAlterar.setStyle("-fx-background-color: Green");
         btnExcluir.setStyle(null);
@@ -92,18 +99,19 @@ public class ControllerExemplar implements Initializable {
 
     @FXML
     private void excluir_click(ActionEvent event) {
-        daoExemplar.apagar(exemplar);
+        dao.apagar(exemplar);
+        preencherTabela();
         preencherTabela();
         btnExcluir.setStyle(null);
     }
 
     @FXML
-    private void tblExemplar_KeyPressed(KeyEvent event) {
+    private void keyPressed_teclaSelecionada(KeyEvent event) {
         exibirDados();
     }
 
     @FXML
-    private void tblExemplar_MouseClicked(MouseEvent event) {
+    private void valor_Selecionado(MouseEvent event) {
         exibirDados();
     }
 
@@ -117,16 +125,15 @@ public class ControllerExemplar implements Initializable {
     }
 
     private void exibirDados() {
-
         this.exemplar = tabela.getSelectionModel().getSelectedItem();
         if (exemplar == null)
-            return;
+            btnExcluir.setStyle(null);
+        return;
 
     }
 
     private void preencherCombo() {
         List<Livro> livros = daoLivro.buscarTodos();
-
         ObservableList<Livro> data = FXCollections.observableArrayList(livros);
         comboLivro.setItems(data);
     }
@@ -140,8 +147,9 @@ public class ControllerExemplar implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ID.setCellValueFactory(new PropertyValueFactory<Exemplar, Long>("id"));
-        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("titulo"));
+        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("nomexemplar"));
         preencherTabela();
+        preencherCombo();
 
     }
 }

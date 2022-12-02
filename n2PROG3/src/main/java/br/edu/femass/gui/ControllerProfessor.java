@@ -48,20 +48,6 @@ public class ControllerProfessor implements Initializable {
     @FXML
     private Button BtnExcluir;
 
-    @FXML
-    private TableView<Professor> Tabela = new TableView<Professor>();
-
-    @FXML
-    private TableColumn<Professor, String> colNome = new TableColumn<>();
-    @FXML
-    private TableColumn<Professor, String> colEnd = new TableColumn<>();
-    @FXML
-    private TableColumn<Professor, String> colTel = new TableColumn<>();
-    @FXML
-    private TableColumn<Professor, String> colDisc = new TableColumn<>();
-    @FXML
-    private TableColumn<Professor, Long> ID = new TableColumn<>();
-
     private DaoProfessor dao = new DaoProfessor();
     private Professor professor;
     private Boolean incluindo;
@@ -80,7 +66,6 @@ public class ControllerProfessor implements Initializable {
         }
 
         preencherLista();
-        preencherTabela();
         editar(false);
         BtnIncluir.setStyle(null);
         BtnAlterar.setStyle(null);
@@ -155,26 +140,9 @@ public class ControllerProfessor implements Initializable {
         LstProfessores.setItems(data);
     }
 
-    private void preencherTabela() {
-        List<Professor> professores = dao.buscarTodosPorid();
-
-        ObservableList<Professor> data = FXCollections.observableList(professores);
-        Tabela.setItems(data);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        colNome.setCellValueFactory(
-                new PropertyValueFactory<Professor, String>("nome"));
-        colEnd.setCellValueFactory(
-                new PropertyValueFactory<Professor, String>("endereco"));
-        colTel.setCellValueFactory(
-                new PropertyValueFactory<Professor, String>("telefone"));
-        colDisc.setCellValueFactory(
-                new PropertyValueFactory<Professor, String>("disciplina"));
-        ID.setCellValueFactory(
-                new PropertyValueFactory<Professor, Long>("id"));
         preencherLista();
-        preencherTabela();
+
     }
 }

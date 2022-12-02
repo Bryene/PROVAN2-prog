@@ -9,8 +9,4 @@ public class DaoProfessor extends Dao<Professor> {
         return em.createQuery("select p from Professor p order by p.nome").getResultList();
     }
 
-    public List<Professor> buscarTodosPorid() {
-        return em.createQuery("select p from Professor p order by p.id").getResultList();
-    }
-
 }

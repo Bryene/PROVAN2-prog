@@ -23,9 +23,10 @@ public class Exemplar {
     private Livro livro;
 
     public Exemplar() {
+        this.dataAquisicao = LocalDate.now();
     }
 
-    public Exemplar(Livro livro) throws Exception {
+    public Exemplar(Livro livro) {
         this.dataAquisicao = LocalDate.now();
         // livro em exemplar
         this.nomexemplar = livro.toString();

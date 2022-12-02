@@ -48,22 +48,6 @@ public class ControllerAluno implements Initializable {
     private Button BtnExcluir;
 
     @FXML
-    private TableView<Aluno> Tabela = new TableView<Aluno>();
-
-    @FXML
-    private TableColumn<Aluno, String> colNome = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Aluno, String> colEnd = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Aluno, String> colTel = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Aluno, String> colMatri = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Aluno, Long> ID = new TableColumn<>();
 
     private DaoAluno dao = new DaoAluno();
     private Aluno aluno;
@@ -83,7 +67,6 @@ public class ControllerAluno implements Initializable {
         }
 
         preencherLista();
-        preencherTabela();
         editar(false);
         BtnIncluir.setStyle(null);
         BtnAlterar.setStyle(null);
@@ -158,27 +141,10 @@ public class ControllerAluno implements Initializable {
         LstAlunos.setItems(data);
     }
 
-    private void preencherTabela() {
-        List<Aluno> alunos = dao.buscarTodosPorid();
-
-        ObservableList<Aluno> data = FXCollections.observableList(alunos);
-        Tabela.setItems(data);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ID.setCellValueFactory(
-                new PropertyValueFactory<Aluno, Long>("id"));
-        colNome.setCellValueFactory(
-                new PropertyValueFactory<Aluno, String>("nome"));
-        colEnd.setCellValueFactory(
-                new PropertyValueFactory<Aluno, String>("endereco"));
-        colTel.setCellValueFactory(
-                new PropertyValueFactory<Aluno, String>("telefone"));
-        colMatri.setCellValueFactory(
-                new PropertyValueFactory<Aluno, String>("matricula"));
 
         preencherLista();
-        preencherTabela();
+
     }
 }

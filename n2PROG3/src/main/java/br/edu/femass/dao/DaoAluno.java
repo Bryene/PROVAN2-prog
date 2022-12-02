@@ -11,8 +11,4 @@ public class DaoAluno extends Dao<Aluno> {
         return em.createQuery("select a from Aluno a order by a.nome").getResultList();
     }
 
-    public List<Aluno> buscarTodosPorid() {
-        return em.createQuery("select a from Aluno a order by a.id").getResultList();
-    }
-
 }
