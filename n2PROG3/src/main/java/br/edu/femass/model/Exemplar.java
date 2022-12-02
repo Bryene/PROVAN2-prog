@@ -15,12 +15,12 @@ public class Exemplar {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private LocalDate dataAquisicao;
+    protected Long id;
+    protected LocalDate dataAquisicao;
 
-    private String nomexemplar;
+    protected String nomexemplar;
     @ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-    private Livro livro;
+    protected Livro livro;
 
     public Exemplar() {
         this.dataAquisicao = LocalDate.now();

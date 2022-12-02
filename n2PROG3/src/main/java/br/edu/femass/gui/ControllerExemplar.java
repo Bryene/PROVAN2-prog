@@ -149,7 +149,6 @@ public class ControllerExemplar implements Initializable {
         ID.setCellValueFactory(new PropertyValueFactory<Exemplar, Long>("id"));
         colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("nomexemplar"));
         preencherTabela();
-        preencherCombo();
 
     }
 }

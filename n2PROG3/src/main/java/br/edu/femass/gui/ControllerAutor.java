@@ -46,19 +46,6 @@ public class ControllerAutor implements Initializable {
     @FXML
     private Button BtnExcluir;
 
-    @FXML
-    private TableView<Autor> Tabela = new TableView<Autor>();
-
-    @FXML
-    private TableColumn<Autor, String> colNome = new TableColumn<>();
-    @FXML
-    private TableColumn<Autor, String> colSobrenome = new TableColumn<>();
-    @FXML
-    private TableColumn<Autor, String> colNac = new TableColumn<>();
-
-    @FXML
-    private TableColumn<Autor, Long> ID = new TableColumn<>();
-
     private DaoAutor dao = new DaoAutor();
     private Autor autor;
     private Boolean incluindo;
@@ -76,7 +63,6 @@ public class ControllerAutor implements Initializable {
         }
 
         preencherLista();
-        preencherTabela();
         editar(false);
         BtnIncluir.setStyle(null);
         BtnAlterar.setStyle(null);
@@ -152,24 +138,9 @@ public class ControllerAutor implements Initializable {
         LstAutores.setItems(data);
     }
 
-    private void preencherTabela() {
-        List<Autor> autores = dao.buscarTodosPorid();
-
-        ObservableList<Autor> data = FXCollections.observableList(autores);
-        Tabela.setItems(data);
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        colNome.setCellValueFactory(
-                new PropertyValueFactory<Autor, String>("nome"));
-        colSobrenome.setCellValueFactory(
-                new PropertyValueFactory<Autor, String>("sobrenome"));
-        colNac.setCellValueFactory(
-                new PropertyValueFactory<Autor, String>("nacionalidade"));
-        ID.setCellValueFactory(
-                new PropertyValueFactory<Autor, Long>("id"));
         preencherLista();
-        preencherTabela();
+
     }
 }
