@@ -23,8 +23,8 @@ public class Livro {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     // @JoinColumn(name = "nome")
     private Autor autor;
-    // @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
-    // private List<Exemplar> exemplares;
+    @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    private List<Exemplar> exemplares;
 
     public Livro() {
     }
@@ -32,8 +32,6 @@ public class Livro {
     public Long getId() {
         return id;
     }
-
-    // protected List<Exemplar> exemplares = new ArrayList<Exemplar>();
 
     public Livro(String titulo, Autor autor) {
         this.titulo = titulo;

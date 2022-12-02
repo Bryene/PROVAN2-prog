@@ -10,7 +10,4 @@ public class DaoLivro extends Dao<Livro> {
         return em.createQuery("select a from Livro a order by a.titulo").getResultList();
     }
 
-    public List<Livro> buscarTodosPorid() {
-        return em.createQuery("select p from Livro p order by p.id").getResultList();
-    }
 }
