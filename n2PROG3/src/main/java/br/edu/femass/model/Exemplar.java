@@ -17,7 +17,7 @@ public class Exemplar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected LocalDate dataAquisicao;
-    protected String nomexemplar;
+    protected String titulo;
     @ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
     protected Livro livro;
 

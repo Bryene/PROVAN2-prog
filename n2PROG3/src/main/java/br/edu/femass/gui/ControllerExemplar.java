@@ -150,7 +150,7 @@ public class ControllerExemplar implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ID.setCellValueFactory(new PropertyValueFactory<Exemplar, Long>("id"));
         coldata.setCellValueFactory(new PropertyValueFactory<Exemplar, LocalDate>("dataAquisicao"));
-        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("titulo"));
+        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("livro"));
         preencherTabela();
 
     }
