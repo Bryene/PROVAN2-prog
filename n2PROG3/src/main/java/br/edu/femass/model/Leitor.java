@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import org.jgrapht.alg.cycle.ChordalityInspector.IterationOrder;
-
 @Entity
 // separa em tabelas as heranças
 @Inheritance(strategy = InheritanceType.JOINED)

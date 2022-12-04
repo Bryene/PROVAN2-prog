@@ -17,7 +17,6 @@ public class Exemplar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected LocalDate dataAquisicao;
-
     protected String nomexemplar;
     @ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
     protected Livro livro;
@@ -29,7 +28,7 @@ public class Exemplar {
     public Exemplar(Livro livro) {
         this.dataAquisicao = LocalDate.now();
         // livro em exemplar
-        this.nomexemplar = livro.toString();
+        this.livro = livro;
     }
 
     public Long getId() {
@@ -40,12 +39,8 @@ public class Exemplar {
         return dataAquisicao;
     }
 
-    public String getNomexemplar() {
-        return nomexemplar;
-    }
-
-    public void setNomexemplar(String nomexemplar) {
-        this.nomexemplar = nomexemplar;
+    public Livro getLivro() {
+        return livro;
     }
 
     public void setLivro(Livro livro) {
@@ -54,7 +49,7 @@ public class Exemplar {
 
     @Override
     public String toString() {
-        return this.getNomexemplar();
+        return this.getLivro().getTitulo();
     }
 
 }

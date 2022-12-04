@@ -21,7 +21,6 @@ public class Livro {
     protected String titulo;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    // @JoinColumn(name = "nome")
     private Autor autor;
     @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
     private List<Exemplar> exemplares;
@@ -52,6 +51,10 @@ public class Livro {
 
     public void setAutores(Autor autor) {
         this.autor = autor;
+    }
+
+    public List<Exemplar> getExemplares() {
+        return exemplares;
     }
 
     @Override

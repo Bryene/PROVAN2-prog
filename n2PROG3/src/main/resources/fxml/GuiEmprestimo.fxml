@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.gui.ControllerEmprestimo">
+   <children>
+      <Button fx:id="BtnSalvar" disable="true" layoutX="534.0" layoutY="164.0" mnemonicParsing="false" onAction="#Gravar_click" text="Salvar" />
+      <ComboBox fx:id="cbExemplar" disable="true" layoutX="390.0" layoutY="88.0" prefHeight="25.0" prefWidth="336.0" />
+       <ComboBox fx:id="cbLeitor" disable="true" layoutX="390.0" layoutY="49.0" prefHeight="25.0" prefWidth="336.0" />
+      <Button fx:id="BtnExcluir" layoutX="136.0" layoutY="253.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
+      <Button fx:id="BtnIncluir" layoutX="229.0" layoutY="253.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
+      <Button fx:id="BtnAlterar" layoutX="44.0" layoutY="253.0" mnemonicParsing="false" onAction="#alterar_click" text="Alterar" />
+      <ListView fx:id="lstEmprestimos" layoutX="55.0" layoutY="24.0" prefHeight="212.0" prefWidth="206.0"  onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" />
+   </children>
+</Pane>
+
+
+

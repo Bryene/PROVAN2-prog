@@ -1,6 +1,7 @@
 package br.edu.femass.gui;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -20,6 +21,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import net.bytebuddy.asm.Advice.Local;
 
 public class ControllerExemplar implements Initializable {
 
@@ -31,6 +33,9 @@ public class ControllerExemplar implements Initializable {
 
     @FXML
     private TableColumn<Livro, String> colExemplar;
+
+    @FXML
+    private TableColumn<Exemplar, LocalDate> coldata;
 
     @FXML
     private TableColumn<Exemplar, Long> ID;
@@ -66,7 +71,6 @@ public class ControllerExemplar implements Initializable {
         }
 
         preencherTabela();
-        preencherTabela();
         editar(false);
         btnIncluir.setStyle(null);
         btnAlterar.setStyle(null);
@@ -77,7 +81,6 @@ public class ControllerExemplar implements Initializable {
     private void incluir_click(ActionEvent event) {
         editar(true);
         preencherCombo();
-        preencherTabela();
 
         incluindo = true;
         livro = new Livro();
@@ -91,7 +94,6 @@ public class ControllerExemplar implements Initializable {
     private void alterar_click(ActionEvent event) {
         editar(true);
         preencherCombo();
-        preencherTabela();
         incluindo = true;
         btnAlterar.setStyle("-fx-background-color: Green");
         btnExcluir.setStyle(null);
@@ -100,7 +102,6 @@ public class ControllerExemplar implements Initializable {
     @FXML
     private void excluir_click(ActionEvent event) {
         dao.apagar(exemplar);
-        preencherTabela();
         preencherTabela();
         btnExcluir.setStyle(null);
     }
@@ -126,10 +127,11 @@ public class ControllerExemplar implements Initializable {
 
     private void exibirDados() {
         this.exemplar = tabela.getSelectionModel().getSelectedItem();
-        if (exemplar == null)
+        if (exemplar == null) {
             btnExcluir.setStyle(null);
-        return;
-
+            return;
+        }
+        btnExcluir.setStyle("-fx-background-color: Red");
     }
 
     private void preencherCombo() {
@@ -147,7 +149,8 @@ public class ControllerExemplar implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ID.setCellValueFactory(new PropertyValueFactory<Exemplar, Long>("id"));
-        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("nomexemplar"));
+        coldata.setCellValueFactory(new PropertyValueFactory<Exemplar, LocalDate>("dataAquisicao"));
+        colExemplar.setCellValueFactory(new PropertyValueFactory<Livro, String>("titulo"));
         preencherTabela();
 
     }

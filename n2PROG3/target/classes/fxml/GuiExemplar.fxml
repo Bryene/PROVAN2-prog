@@ -19,7 +19,8 @@
        <TableView fx:id="tabela" layoutX="26.0" layoutY="41.0" prefHeight="167.0" prefWidth="300.0">
         <columns>
           <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="colExemplar" prefWidth="224.0" text="Exemplar" />
+          <TableColumn fx:id="colExemplar" prefWidth="107.0" text="Exemplar" />
+               <TableColumn fx:id="coldata" prefWidth="117.0" text="Data Aquisiçao" />
         </columns>
       </TableView>
    </children>
