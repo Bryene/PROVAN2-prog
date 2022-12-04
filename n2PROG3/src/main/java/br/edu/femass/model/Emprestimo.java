@@ -3,13 +3,8 @@
  * package br.edu.femass.model;
  * 
  * import java.time.LocalDate;
- * import java.time.format.DateTimeFormatter;
- * import java.util.ArrayList;
- * import java.util.List;
- * 
  * import javax.persistence.CascadeType;
  * import javax.persistence.Entity;
- * import javax.persistence.FetchType;
  * import javax.persistence.GeneratedValue;
  * import javax.persistence.GenerationType;
  * import javax.persistence.Id;
@@ -77,8 +72,16 @@
  * this.dataDevolucao = dataDevolucao;
  * }
  * 
+ * public Exemplar getExemplar() {
+ * return exemplar;
+ * }
+ * 
  * public void setExemplar(Exemplar exemplar) {
  * this.exemplar = exemplar;
+ * }
+ * 
+ * public Leitor getLeitor() {
+ * return leitor;
  * }
  * 
  * public void setLeitor(Leitor leitor) {
@@ -86,13 +89,12 @@
  * }
  * 
  * public String toString() {
- * return (leitor.getNome() + " || " + "Exemplar emprestado: " +
- * exemplar.getLivro());
- * // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
- * // return this.livro.getTitulo() + " - Data de Devolução prevista: "
- * /// + this.dataPrevistaDevolucao.format(formatter);
+ * return "[Exemplar] || " + livro.getTitulo() +
+ * "||  Leitor:" + leitor.getNome() +
+ * "||  Data de Devolucao: " + getDataPrevistaDevolucao();
  * 
  * }
  * 
  * }
+ * 
  */

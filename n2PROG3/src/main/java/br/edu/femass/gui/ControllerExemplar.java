@@ -21,7 +21,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import net.bytebuddy.asm.Advice.Local;
 
 public class ControllerExemplar implements Initializable {
 

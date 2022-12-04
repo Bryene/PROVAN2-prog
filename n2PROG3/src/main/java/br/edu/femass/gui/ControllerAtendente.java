@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ControllerAtendente implements Initializable {

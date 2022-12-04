@@ -19,7 +19,7 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String titulo;
-
+    // eager= usado quando não faz sentido puxar um objeto do BD sem puxar um outro
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Autor autor;
     @OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
@@ -59,7 +59,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Titulo: " + titulo + " || " + "Autor: " + autor;
+        return "Titulo: " + titulo + " || " + autor;
     }
 
 }

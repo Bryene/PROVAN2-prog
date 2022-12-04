@@ -2,33 +2,23 @@
  * package br.edu.femass.gui;
  * 
  * import java.net.URL;
- * import java.time.LocalDate;
- * import java.util.ArrayList;
+ * 
  * import java.util.List;
  * import java.util.ResourceBundle;
  * 
- * import org.hibernate.criterion.EmptyExpression;
- * 
- * import br.edu.femass.dao.DaoAluno;
  * import br.edu.femass.dao.DaoEmprestimo;
  * import br.edu.femass.dao.DaoExemplar;
  * import br.edu.femass.dao.DaoLeitor;
- * import br.edu.femass.dao.DaoLivro;
- * import br.edu.femass.dao.DaoProfessor;
- * import br.edu.femass.model.Aluno;
  * import br.edu.femass.model.Emprestimo;
  * import br.edu.femass.model.Exemplar;
  * import br.edu.femass.model.Leitor;
- * import br.edu.femass.model.Livro;
- * import br.edu.femass.model.Professor;
+ * 
  * import javafx.collections.FXCollections;
  * import javafx.collections.ObservableList;
  * import javafx.event.ActionEvent;
  * import javafx.fxml.FXML;
  * import javafx.fxml.FXMLLoader;
  * import javafx.fxml.Initializable;
- * import javafx.scene.Parent;
- * import javafx.scene.Scene;
  * import javafx.scene.control.Button;
  * import javafx.scene.control.ComboBox;
  * import javafx.scene.control.ListView;
@@ -60,14 +50,14 @@
  * @FXML
  * private ListView<Emprestimo> lstEmprestimos;
  * 
- * DaoExemplar daoExemplar = new DaoExemplar();
- * DaoLeitor daoLeitor = new DaoLeitor();
- * // DaoProfessor daoProfessor = new DaoProfessor();
- * // DaoAluno daoAluno = new DaoAluno();
- * 
- * DaoEmprestimo dao = new DaoEmprestimo();
  * private Emprestimo emprestimo;
  * private Boolean incluindo;
+ * private Exemplar exemplar;
+ * private Leitor leitor;
+ * 
+ * DaoExemplar daoExemplar = new DaoExemplar();
+ * DaoLeitor daoLeitor = new DaoLeitor();
+ * DaoEmprestimo dao = new DaoEmprestimo();
  * 
  * @FXML
  * private void Gravar_Click(ActionEvent event) {
@@ -95,8 +85,10 @@
  * editar(true);
  * incluindo = true;
  * emprestimo = new Emprestimo();
- * cbLeitor.setValue(null);
- * cbExemplar.setValue(null);
+ * exemplar = new Exemplar();
+ * leitor = new Leitor();
+ * cbLeitor.requestFocus();
+ * cbExemplar.requestFocus();
  * BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
  * BtnExcluir.setStyle(null);
  * }
@@ -105,7 +97,7 @@
  * private void alterar_click(ActionEvent event) {
  * editar(true);
  * incluindo = true;
- * BtnAlterar.setStyle("-fx-background-color: Green");
+ * BtnAlterar.setStyle(null);
  * BtnExcluir.setStyle(null);
  * }
  * 
@@ -134,14 +126,16 @@
  * BtnAlterar.setDisable(habilitar);
  * BtnIncluir.setDisable(habilitar);
  * BtnExcluir.setDisable(habilitar);
- * BtnSalvar.setDisable(habilitar);
+ * BtnSalvar.setDisable(!habilitar);
  * }
  * 
  * private void exibirDados() {
  * this.emprestimo = lstEmprestimos.getSelectionModel().getSelectedItem();
- * if (emprestimo == null)
+ * if (emprestimo == null) {
  * BtnExcluir.setStyle(null);
  * return;
+ * }
+ * BtnExcluir.setStyle("-fx-background-color: Red");
  * }
  * 
  * private void preencherLista() {
@@ -152,7 +146,6 @@
  * }
  * 
  * private void preencherExemplar() {
- * // cbExemplar.getItems().clear();
  * List<Exemplar> exemplares = DaoExemplar.buscarTodos();
  * ObservableList<Exemplar> data2 =
  * FXCollections.observableArrayList(exemplares);
@@ -160,33 +153,18 @@
  * }
  * 
  * private void preencherComboLeitor() {
+ * cbLeitor.getItems().clear();
  * List<Leitor> leitores = daoLeitor.buscarTodos();
  * ObservableList<Leitor> data3 = FXCollections.observableArrayList(leitores);
  * cbLeitor.setItems(data3);
  * }
  * 
- * /*
- * 
- * @FXML
- * private void btnDevolverAction(ActionEvent event) {
- * try {
- * Emprestimo emprestimoSelecionado =
- * lstEmprestimos.getSelectionModel().getSelectedItem();
- * emprestimoSelecionado.setDataDevolucao(LocalDate.now());
- * DaoEmprestimo.alterar(emprestimoSelecionado);
- * preencherLista();
- * lstEmprestimos.setDisable(false);
- * } catch (Exception e) {
- * e.printStackTrace();
- * }
- * }
- */
-
-/*
  * @Override
  * public void initialize(URL location, ResourceBundle resources) {
  * preencherLista();
+ * 
  * }
  * 
  * }
+ * 
  */

@@ -9,7 +9,8 @@
  * 
  * public static List<Emprestimo> buscarTodos() {
  * return
- * em.createQuery("select a from Emprestimo a order by a.id").getResultList();
+ * em.createQuery("select a from Emprestimo a order by a.dataEmprestimo").
+ * getResultList();
  * }
  * 
  * }
