@@ -49,7 +49,7 @@ public class Exemplar {
 
     @Override
     public String toString() {
-        return this.getLivro().getTitulo();
+        return "Título: " + this.getLivro().getTitulo() + " || " + "Data: " + getDataAquisicao();
     }
 
 }

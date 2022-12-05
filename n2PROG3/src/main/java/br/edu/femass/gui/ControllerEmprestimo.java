@@ -1,170 +1,134 @@
-/*
- * package br.edu.femass.gui;
- * 
- * import java.net.URL;
- * 
- * import java.util.List;
- * import java.util.ResourceBundle;
- * 
- * import br.edu.femass.dao.DaoEmprestimo;
- * import br.edu.femass.dao.DaoExemplar;
- * import br.edu.femass.dao.DaoLeitor;
- * import br.edu.femass.model.Emprestimo;
- * import br.edu.femass.model.Exemplar;
- * import br.edu.femass.model.Leitor;
- * 
- * import javafx.collections.FXCollections;
- * import javafx.collections.ObservableList;
- * import javafx.event.ActionEvent;
- * import javafx.fxml.FXML;
- * import javafx.fxml.FXMLLoader;
- * import javafx.fxml.Initializable;
- * import javafx.scene.control.Button;
- * import javafx.scene.control.ComboBox;
- * import javafx.scene.control.ListView;
- * import javafx.scene.control.TextField;
- * import javafx.scene.input.KeyEvent;
- * import javafx.scene.input.MouseEvent;
- * import javafx.stage.Stage;
- * 
- * public class ControllerEmprestimo implements Initializable {
- * 
- * @FXML
- * private Button BtnSalvar;
- * 
- * @FXML
- * private Button BtnIncluir;
- * 
- * @FXML
- * private Button BtnAlterar;
- * 
- * @FXML
- * private Button BtnExcluir;
- * 
- * @FXML
- * private ComboBox<Leitor> cbLeitor;
- * 
- * @FXML
- * private ComboBox<Exemplar> cbExemplar;
- * 
- * @FXML
- * private ListView<Emprestimo> lstEmprestimos;
- * 
- * private Emprestimo emprestimo;
- * private Boolean incluindo;
- * private Exemplar exemplar;
- * private Leitor leitor;
- * 
- * DaoExemplar daoExemplar = new DaoExemplar();
- * DaoLeitor daoLeitor = new DaoLeitor();
- * DaoEmprestimo dao = new DaoEmprestimo();
- * 
- * @FXML
- * private void Gravar_Click(ActionEvent event) {
- * emprestimo.setExemplar(cbExemplar.getSelectionModel().getSelectedItem());
- * emprestimo.setLeitor(cbLeitor.getSelectionModel().getSelectedItem());
- * 
- * if (incluindo) {
- * dao.inserir(emprestimo);
- * } else {
- * dao.alterar(emprestimo);
- * }
- * 
- * preencherLista();
- * preencherExemplar();
- * preencherComboLeitor();
- * editar(false);
- * BtnIncluir.setStyle(null);
- * BtnAlterar.setStyle(null);
- * BtnExcluir.setStyle(null);
- * 
- * }
- * 
- * @FXML
- * private void incluir_click(ActionEvent event) {
- * editar(true);
- * incluindo = true;
- * emprestimo = new Emprestimo();
- * exemplar = new Exemplar();
- * leitor = new Leitor();
- * cbLeitor.requestFocus();
- * cbExemplar.requestFocus();
- * BtnIncluir.setStyle("-fx-background-color: MediumSeaGreen");
- * BtnExcluir.setStyle(null);
- * }
- * 
- * @FXML
- * private void alterar_click(ActionEvent event) {
- * editar(true);
- * incluindo = true;
- * BtnAlterar.setStyle(null);
- * BtnExcluir.setStyle(null);
- * }
- * 
- * @FXML
- * private void excluir_click(ActionEvent event) {
- * dao.apagar(emprestimo);
- * preencherLista();
- * BtnExcluir.setStyle(null);
- * 
- * }
- * 
- * @FXML
- * private void keyPressed_teclaSelecionada(KeyEvent event) {
- * exibirDados();
- * }
- * 
- * @FXML
- * private void valor_Selecionado(MouseEvent event) {
- * exibirDados();
- * }
- * 
- * private void editar(boolean habilitar) {
- * lstEmprestimos.setDisable(habilitar);
- * cbExemplar.setDisable(!habilitar);
- * cbLeitor.setDisable(!habilitar);
- * BtnAlterar.setDisable(habilitar);
- * BtnIncluir.setDisable(habilitar);
- * BtnExcluir.setDisable(habilitar);
- * BtnSalvar.setDisable(!habilitar);
- * }
- * 
- * private void exibirDados() {
- * this.emprestimo = lstEmprestimos.getSelectionModel().getSelectedItem();
- * if (emprestimo == null) {
- * BtnExcluir.setStyle(null);
- * return;
- * }
- * BtnExcluir.setStyle("-fx-background-color: Red");
- * }
- * 
- * private void preencherLista() {
- * List<Emprestimo> emprestimos = DaoEmprestimo.buscarTodos();
- * ObservableList<Emprestimo> data =
- * FXCollections.observableArrayList(emprestimos);
- * lstEmprestimos.setItems(data);
- * }
- * 
- * private void preencherExemplar() {
- * List<Exemplar> exemplares = DaoExemplar.buscarTodos();
- * ObservableList<Exemplar> data2 =
- * FXCollections.observableArrayList(exemplares);
- * cbExemplar.setItems(data2);
- * }
- * 
- * private void preencherComboLeitor() {
- * cbLeitor.getItems().clear();
- * List<Leitor> leitores = daoLeitor.buscarTodos();
- * ObservableList<Leitor> data3 = FXCollections.observableArrayList(leitores);
- * cbLeitor.setItems(data3);
- * }
- * 
- * @Override
- * public void initialize(URL location, ResourceBundle resources) {
- * preencherLista();
- * 
- * }
- * 
- * }
- * 
- */
+package br.edu.femass.gui;
+
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import br.edu.femass.dao.DaoAluno;
+import br.edu.femass.dao.DaoEmprestimo;
+import br.edu.femass.dao.DaoExemplar;
+import br.edu.femass.dao.DaoLeitor;
+import br.edu.femass.dao.DaoProfessor;
+import br.edu.femass.model.Aluno;
+import br.edu.femass.model.Emprestimo;
+import br.edu.femass.model.Exemplar;
+import br.edu.femass.model.Leitor;
+import br.edu.femass.model.Livro;
+import br.edu.femass.model.Professor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+
+public class ControllerEmprestimo implements Initializable {
+
+    @FXML
+    private ComboBox<Aluno> comboAluno;
+
+    @FXML
+    private ComboBox<Professor> comboProfessor;
+
+    @FXML
+    private ComboBox<Leitor> comboLeitor;
+
+    @FXML
+    private ListView<Exemplar> LstExemplares;
+
+    @FXML
+    private TableView<Exemplar> titulo = new TableView<>();
+
+    @FXML
+    private TableView<Emprestimo> tabela = new TableView<>();
+
+    @FXML
+    private TableColumn<Emprestimo, Long> ID;
+
+    @FXML
+    private TableColumn<Exemplar, String> colExemplar;
+
+    @FXML
+    private TableColumn<Leitor, String> colLeitor;
+
+    @FXML
+    private TableColumn<Emprestimo, LocalDate> colData;
+
+    DaoEmprestimo daoEmprestimo = new DaoEmprestimo();
+    DaoExemplar daoExemplar = new DaoExemplar();
+    DaoAluno daoAluno = new DaoAluno();
+    DaoProfessor daoProfessor = new DaoProfessor();
+    DaoLeitor daoLeitor = new DaoLeitor();
+
+    private Exemplar exemplar;
+    private Emprestimo emprestimo;
+    private Aluno aluno;
+    private Professor professor;
+    private Leitor leitor;
+
+    private void preencherLista() {
+        List<Exemplar> exemplares = daoExemplar.buscarTodos();
+        ObservableList<Exemplar> data = FXCollections.observableList(exemplares);
+        LstExemplares.setItems(data);
+
+    }
+
+    private void preencherTabela() {
+        List<Emprestimo> emprestimos = daoEmprestimo.buscarTodos();
+        ObservableList<Emprestimo> dataEmprestimo = FXCollections.observableArrayList(emprestimos);
+        tabela.setItems(dataEmprestimo);
+        exemplar = titulo.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    private void Btnaluno(ActionEvent event) {
+        aluno = comboAluno.getSelectionModel().getSelectedItem();
+        emprestimo = new Emprestimo(exemplar, aluno);
+        daoEmprestimo.inserir(emprestimo);
+        preencherCombo();
+        preencherTabela();
+    }
+
+    @FXML
+    private void Btnprofessor(ActionEvent event) {
+        professor = comboProfessor.getSelectionModel().getSelectedItem();
+        emprestimo = new Emprestimo(exemplar, professor);
+        daoEmprestimo.inserir(emprestimo);
+        preencherCombo();
+        preencherTabela();
+    }
+
+    private void preencherCombo() {
+
+        List<Leitor> leitores = daoLeitor.buscarTodos();
+        ObservableList<Leitor> dataLeitor = FXCollections.observableArrayList(leitores);
+        ;
+        List<Aluno> alunos = daoAluno.buscarTodos();
+        ObservableList<Aluno> dataAluno = FXCollections.observableArrayList(alunos);
+        comboAluno.setItems(dataAluno);
+        List<Professor> professores = daoProfessor.buscarTodos();
+        ObservableList<Professor> dataProfessor = FXCollections.observableArrayList(professores);
+        comboProfessor.setItems(dataProfessor);
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        ID.setCellValueFactory(new PropertyValueFactory<Emprestimo, Long>("id"));
+        colExemplar.setCellValueFactory(new PropertyValueFactory<Exemplar, String>("Exemplar"));
+        colLeitor.setCellValueFactory(new PropertyValueFactory<Leitor, String>("leitor"));
+        colData.setCellValueFactory(new PropertyValueFactory<Emprestimo, LocalDate>("dataPrevisaoDevolucao"));
+        emprestimo = new Emprestimo();
+        preencherTabela();
+        preencherCombo();
+        preencherLista();
+    }
+}

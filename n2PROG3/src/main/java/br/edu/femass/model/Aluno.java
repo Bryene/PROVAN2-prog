@@ -55,6 +55,6 @@ public class Aluno extends Leitor {
 
     @Override
     public String toString() {
-        return this.nome + " || " + this.matricula + " || " + this.prazoMaximoDev + " dias";
+        return this.nome + " || " + this.prazoMaximoDev + " dias";
     }
 }

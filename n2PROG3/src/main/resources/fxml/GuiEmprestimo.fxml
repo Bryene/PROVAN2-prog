@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
@@ -9,17 +10,23 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="352.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.gui.ControllerEmprestimo">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="646.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.femass.gui.ControllerEmprestimo">
    <children>
-      <Button fx:id="BtnSalvar" disable="true" layoutX="534.0" layoutY="164.0" mnemonicParsing="false" onAction="#Gravar_click" text="Salvar" />
-      <ComboBox fx:id="cbExemplar" disable="true" layoutX="390.0" layoutY="88.0" prefHeight="25.0" prefWidth="336.0" />
-       <ComboBox fx:id="cbLeitor" disable="true" layoutX="390.0" layoutY="49.0" prefHeight="25.0" prefWidth="336.0" />
-      <Button fx:id="BtnExcluir" layoutX="136.0" layoutY="253.0" mnemonicParsing="false" onAction="#excluir_click" text="Excluir" />
-      <Button fx:id="BtnIncluir" layoutX="229.0" layoutY="253.0" mnemonicParsing="false" onAction="#incluir_click" text="Incluir" />
-      <Button fx:id="BtnAlterar" layoutX="44.0" layoutY="253.0" mnemonicParsing="false" onAction="#alterar_click" text="Alterar" />
-      <ListView fx:id="lstEmprestimos" layoutX="55.0" layoutY="24.0" prefHeight="212.0" prefWidth="206.0"  onKeyPressed="#keyPressed_teclaSelecionada" onMouseClicked="#valor_Selecionado" />
+      <ListView fx:id="LstExemplares" layoutX="44.0" layoutY="243.0" prefHeight="301.0" prefWidth="207.0" />
+      <ComboBox fx:id="comboProfessor" layoutX="358.0" layoutY="112.0" prefHeight="25.0" prefWidth="186.0" />
+       <ComboBox fx:id="comboAluno" layoutX="69.0" layoutY="112.0" prefHeight="25.0" prefWidth="186.0" />
+      <Button layoutX="82.0" layoutY="159.0" mnemonicParsing="false" onAction="#Btnprofessor" prefHeight="25.0" prefWidth="170.0" text="Emprestimo de Professores" />
+      <Button layoutX="372.0" layoutY="159.0" mnemonicParsing="false" onAction="#Btnaluno" prefHeight="25.0" prefWidth="170.0" text="Emprestimo de Alunos" />
+      <Label layoutX="419.0" layoutY="71.0" prefHeight="40.0" prefWidth="170.0" text="Aluno"  />
+      <Label layoutX="127.0" layoutY="72.0" prefHeight="40.0" prefWidth="170.0" text="Professor" />
+     <Label layoutX="51.0" layoutY="203.0" prefHeight="40.0" prefWidth="170.0" text="Exemplares para empréstimo" />
+      <TableView fx:id="tabela" layoutX="315.0" layoutY="309.0" prefHeight="184.0" prefWidth="400.0">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="55.0" text="ID" />
+          <TableColumn fx:id="colExemplar" prefWidth="133.0" text="Exemplar" />
+            <TableColumn fx:id="colLeitor" minWidth="0.0" prefWidth="100.0" text="Leitor" />
+            <TableColumn fx:id="colData" prefWidth="111.0" text="Data Prevista" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
-
-
-

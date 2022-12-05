@@ -55,6 +55,6 @@ public class Professor extends Leitor {
 
     @Override
     public String toString() {
-        return this.nome + " || " + this.disciplina + " || " + this.prazoMaximoDev + " dias";
+        return this.nome + " || " + this.prazoMaximoDev + " dias";
     }
 }
