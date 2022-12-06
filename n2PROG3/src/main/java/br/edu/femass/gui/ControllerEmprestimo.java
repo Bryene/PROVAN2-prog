@@ -123,7 +123,6 @@ public class ControllerEmprestimo implements Initializable {
         colLeitor.setCellValueFactory(new PropertyValueFactory<Leitor, String>("leitor"));
         colExemplar.setCellValueFactory(new PropertyValueFactory<Exemplar, String>("exemplar"));
         colData.setCellValueFactory(new PropertyValueFactory<Emprestimo, LocalDate>("dataPrevistaDevolucao"));
-        emprestimo = new Emprestimo();
         preencherTabela();
         preencherCombo();
         preencherLista();
