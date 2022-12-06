@@ -29,6 +29,7 @@ public class Exemplar {
         this.dataAquisicao = LocalDate.now();
         // livro em exemplar
         this.livro = livro;
+
     }
 
     public Long getId() {
@@ -49,7 +50,7 @@ public class Exemplar {
 
     @Override
     public String toString() {
-        return "Título: " + this.getLivro().getTitulo() + " || " + "Data: " + getDataAquisicao();
+        return "Título:" + this.getLivro().getTitulo() + " || " + "Data: " + getDataAquisicao();
     }
 
 }

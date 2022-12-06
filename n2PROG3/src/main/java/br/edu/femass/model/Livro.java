@@ -1,6 +1,5 @@
 package br.edu.femass.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,6 +17,7 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
     protected String titulo;
+
     // eager= usado quando não faz sentido puxar um objeto do BD sem puxar um outro
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Autor autor;
@@ -32,7 +31,7 @@ public class Livro {
         return id;
     }
 
-    public Livro(String titulo, Autor autor) {
+    public Livro(String titulo, Autor autor, String ano) {
         this.titulo = titulo;
         this.autor = autor;
     }

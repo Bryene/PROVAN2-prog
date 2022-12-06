@@ -26,8 +26,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 
 public class ControllerEmprestimo implements Initializable {
 
@@ -81,10 +79,11 @@ public class ControllerEmprestimo implements Initializable {
     }
 
     private void preencherTabela() {
+        exemplar = titulo.getSelectionModel().getSelectedItem();
         List<Emprestimo> emprestimos = daoEmprestimo.buscarTodos();
         ObservableList<Emprestimo> dataEmprestimo = FXCollections.observableArrayList(emprestimos);
         tabela.setItems(dataEmprestimo);
-        exemplar = titulo.getSelectionModel().getSelectedItem();
+
     }
 
     @FXML
@@ -109,7 +108,6 @@ public class ControllerEmprestimo implements Initializable {
 
         List<Leitor> leitores = daoLeitor.buscarTodos();
         ObservableList<Leitor> dataLeitor = FXCollections.observableArrayList(leitores);
-        ;
         List<Aluno> alunos = daoAluno.buscarTodos();
         ObservableList<Aluno> dataAluno = FXCollections.observableArrayList(alunos);
         comboAluno.setItems(dataAluno);
@@ -121,11 +119,10 @@ public class ControllerEmprestimo implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
         ID.setCellValueFactory(new PropertyValueFactory<Emprestimo, Long>("id"));
-        colExemplar.setCellValueFactory(new PropertyValueFactory<Exemplar, String>("Exemplar"));
         colLeitor.setCellValueFactory(new PropertyValueFactory<Leitor, String>("leitor"));
-        colData.setCellValueFactory(new PropertyValueFactory<Emprestimo, LocalDate>("dataPrevisaoDevolucao"));
+        colExemplar.setCellValueFactory(new PropertyValueFactory<Exemplar, String>("exemplar"));
+        colData.setCellValueFactory(new PropertyValueFactory<Emprestimo, LocalDate>("dataPrevistaDevolucao"));
         emprestimo = new Emprestimo();
         preencherTabela();
         preencherCombo();

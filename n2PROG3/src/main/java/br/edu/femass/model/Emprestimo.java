@@ -16,7 +16,7 @@ public class Emprestimo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate dataEmprestimo;
-    private LocalDate dataPrevisaoDevolucao;
+    private LocalDate dataPrevistaDevolucao;
     private LocalDate dataDevolucao;
 
     // registros de uma entidade estão relacionados com muitos registros de outra
@@ -33,7 +33,7 @@ public class Emprestimo {
 
     public Emprestimo(Exemplar exemplar, Leitor leitor) {
         this.dataEmprestimo = LocalDate.now();
-        this.dataPrevisaoDevolucao = LocalDate.now().plusDays(leitor.prazoMaximoDev);
+        this.dataPrevistaDevolucao = LocalDate.now().plusDays(leitor.getPrazo());
         this.exemplar = exemplar;
         this.leitor = leitor;
 
@@ -51,8 +51,8 @@ public class Emprestimo {
         return dataEmprestimo;
     }
 
-    public LocalDate getDataPrevisaoDevolucao() {
-        return dataPrevisaoDevolucao;
+    public LocalDate getDataPrevistaDevolucao() {
+        return dataPrevistaDevolucao;
     }
 
     public Exemplar getExemplar() {
@@ -79,7 +79,12 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public void setDataPrevisaoDevolucao(LocalDate dataPrevisaoDevolucao) {
-        this.dataPrevisaoDevolucao = dataPrevisaoDevolucao;
+    public void setDataPrevistaoDevolucao(LocalDate dataPrevistaDevolucao) {
+        this.dataPrevistaDevolucao = dataPrevistaDevolucao;
+    }
+
+    @Override
+    public String toString() {
+        return "Titulo: " + this.getExemplar().getLivro();
     }
 }
