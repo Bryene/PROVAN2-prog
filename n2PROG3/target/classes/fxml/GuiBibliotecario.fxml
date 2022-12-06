@@ -14,6 +14,6 @@
    <children>
       <Button layoutX="29.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnCadastrarAutor" text="Cadastrar Autor" />
       <Button layoutX="198.0" layoutY="42.0" mnemonicParsing="false" onAction="#btnCadastrarlivro" text="Cadastrar Livro" />
-      <Button layoutX="105.0" layoutY="101.0" mnemonicParsing="false" onAction="#btnCadastrarExemplar" text="Cadastrar Exemplar" />
+      <Button layoutX="105.0" layoutY="101.0" mnemonicParsing="false" onAction="#btnCadastrarExemplar" text="Cadastrar Exemplar"/>
    </children>
 </Pane>

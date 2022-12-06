@@ -36,7 +36,7 @@ public class ControllerBibliotecario implements Initializable {
     @FXML
     private void btnCadastrarlivro(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/GuiLivro.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Guilivro.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add("/styles/Styles.css");
             scene.getRoot().setStyle("-fx-font-family: 'serif'");
